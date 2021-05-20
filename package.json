@@ -1,5 +1,6 @@
 {
   "name": "whitiwhiti",
+  "description": "Whitiwhiti (\"swap, exchange\" in Maori) is a PageDuty app that can easily swap 2 on-call shifts for you",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",

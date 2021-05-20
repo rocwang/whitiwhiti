@@ -3,9 +3,18 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
 export default defineComponent({
-  name: "Aop"
+  name: "App",
+  setup() {
+    const route = useRoute();
+
+    // tag body with route/component name
+    watchEffect(() => {
+      document.body.setAttribute("route", route.name || "");
+    });
+  }
 });
 </script>

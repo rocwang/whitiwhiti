@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import Home from "./components/Home.vue";
 import Dummy from "./components/Dummy.vue";
+import Login from "./components/Login.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,8 +10,19 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: "/login",
+      component: Login,
+      name: Login.name,
+      beforeEnter: () => {
+        const token = localStorage.getItem("token");
+
+        return token ? "/" : true;
+      }
+    },
+    {
       path: "/oauth-callback",
       component: Dummy,
+      name: Dummy.name,
       beforeEnter: async () => {
         const urlParams = new URLSearchParams(location.search);
         const code = urlParams.get("code");
@@ -39,20 +51,11 @@ const router = createRouter({
     {
       path: "/",
       component: Home,
+      name: Home.name,
       beforeEnter: () => {
         const token = localStorage.getItem("token");
 
-        if (token) {
-          return true;
-        } else {
-          location.href = `https://app.pagerduty.com/oauth/authorize?client_id=${
-            import.meta.env.VITE_CLIENT_ID
-          }&redirect_uri=${
-            import.meta.env.VITE_REDIRECT_URI
-          }&response_type=code&code_challenge_method=S256&code_challenge`;
-
-          return false;
-        }
+        return token ? true : "/login";
       }
     }
   ]

@@ -87,6 +87,7 @@ import {
 } from "date-fns/esm/fp";
 import { groupBy, pipe } from "ramda";
 import { enNZ } from "date-fns/locale";
+import { useRouter } from "vue-router";
 
 interface OnCall {
   user: { summary: string; [k: string]: string };
@@ -189,9 +190,10 @@ export default defineComponent({
       }
     }
 
+    const router = useRouter();
     function logout() {
       localStorage.removeItem("token");
-      location.reload();
+      router.push("/login");
     }
 
     return {
@@ -208,7 +210,7 @@ export default defineComponent({
 </script>
 
 <style module>
-body {
+body[route="Home"] {
   display: grid;
   grid-template:
     "main aside" auto
