@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -36,7 +37,6 @@ const router = createRouter({
     },
     {
       path: "/",
-      name: "home",
       component: App,
       beforeEnter: () => {
         const token = localStorage.getItem("token");
@@ -59,4 +59,4 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
-app.mount("#app");
+app.mount(document.body);
