@@ -6,12 +6,8 @@
         <button
           v-for="item in entry.onCalls"
           type="button"
-          :class="[
-            'list-group-item',
-            'list-group-item-action',
-            { active: candidates.includes(item) },
-            $style.shift
-          ]"
+          class="list-group-item list-group-item-action font-monospace"
+          :class="[{ active: candidates.includes(item) }, $style.shift]"
           @click="handleItem(item)"
         >
           🗓 {{ format(item.start) }} - {{ format(item.end) }}
@@ -28,7 +24,7 @@
             🧑‍💻 {{ item.user.summary }}
           </div>
           <ul class="list-group list-group-flush">
-            <li :class="['list-group-item', $style.shift]">
+            <li class="list-group-item font-monospace" :class="$style.shift">
               🗓 {{ format(item.start) }} - {{ format(item.end) }}
             </li>
           </ul>
@@ -45,7 +41,7 @@
             🧑‍💻 {{ item.user.summary }}
           </div>
           <ul class="list-group list-group-flush">
-            <li :class="['list-group-item', $style.shift]">
+            <li class="list-group-item font-monospace" :class="$style.shift">
               🗓 {{ format(item.start) }} - {{ format(item.end) }}
             </li>
           </ul>
@@ -240,7 +236,6 @@ body[route="Home"] {
 
 .shift {
   font-size: 14px;
-  font-family: monospace;
 }
 
 .arrowDown {
