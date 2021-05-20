@@ -105,7 +105,7 @@ export default defineComponent({
     console.log("read", token);
     const pd = api({ token, tokenType: "bearer" } as Partial<APIParameters>);
 
-    const onCallsByName = ref<{ name: string; onCalls: OnCall[] }[]>({});
+    const onCallsByName = ref<{ name: string; onCalls: OnCall[] }[]>([]);
     async function loadOnCalls() {
       const { resource }: { resource: OnCall[] } = await pd.get("/oncalls", {
         data: {
