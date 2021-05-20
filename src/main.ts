@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import Home from "./components/Home.vue";
+import Dummy from "./components/Dummy.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,7 +10,7 @@ const router = createRouter({
   routes: [
     {
       path: "/oauth-callback",
-      component: App,
+      component: Dummy,
       beforeEnter: async () => {
         const urlParams = new URLSearchParams(location.search);
         const code = urlParams.get("code");
@@ -26,10 +28,9 @@ const router = createRouter({
 
         if (response.ok) {
           const json = await response.json();
-
-          if (json.access_token) {
-            localStorage.setItem("token", json.access_token);
-          }
+          localStorage.setItem("token", json.access_token);
+        } else {
+          alert(await response.text());
         }
 
         return "/";
@@ -37,7 +38,7 @@ const router = createRouter({
     },
     {
       path: "/",
-      component: App,
+      component: Home,
       beforeEnter: () => {
         const token = localStorage.getItem("token");
 

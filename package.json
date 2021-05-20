@@ -1,6 +1,6 @@
 {
-  "name": "shift-swap",
-  "version": "0.0.0",
+  "name": "whitiwhiti",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -18,7 +18,7 @@
     "@types/ramda": "^0.27.40",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
-    "prettier": "^1.19.1",
+    "prettier": "^2.3.0",
     "typescript": "^4.1.3",
     "vite": "^2.3.3",
     "vue-tsc": ">=0.1.4"
