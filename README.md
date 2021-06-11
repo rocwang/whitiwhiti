@@ -3,6 +3,8 @@
 Whitiwhiti ("swap, exchange" in Maori) is a PageDuty app that can easily swap 2
 on-call shifts using PageDuty's "override" feature.
 
+[Try It Now.](https://whitiwhiti.netlify.app/)
+
 ## Developemnt
 
 ### Required Environement Variables
